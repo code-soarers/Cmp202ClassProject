@@ -1,11 +1,17 @@
-public class Geometry extends Maths{
+package UI;
 
+import UI.Maths;
+
+public class Geometry extends Maths {
+    public Geometry(){
+        System.out.println("Constructor called");
+    }
     void accessingPi(){
         System.out.println(getPi());
         setPi(34f);
         System.out.println(getPi());
     }
-    float areaOfSquare(float length){
+    public float areaOfSquare(float length){
         return powTwo(length);
     }
 
@@ -16,4 +22,6 @@ public class Geometry extends Maths{
     float areaOfRectangle(float length,float breadth){
         return multiply(length, breadth);
     }
+
+
 }
