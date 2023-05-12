@@ -1,5 +1,7 @@
 package UI;
 
+import UI.Files.FileWriterMain;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -63,12 +65,15 @@ public class GeometryUI
                 public void actionPerformed(ActionEvent e) {
                     try {
                         float area=geo.areaOfSquare(Float.parseFloat(enterLengthOfSquare.getText()));
-                        JOptionPane.showMessageDialog(null,area);
-                        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//                        JOptionPane.showMessageDialog(null,area);
+//                        areaOfSquareFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        FileWriterMain file=new FileWriterMain();
+                        file.writeData("Area of Square of length"+enterLengthOfSquare.getText()+area);
+
 
                     }
                     catch(Exception eme){
-                        System.out.println("Error!!");
+                        JOptionPane.showMessageDialog(null,"ERROR!!");
                     }
 
                 }
