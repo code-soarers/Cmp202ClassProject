@@ -1,19 +1,16 @@
 package UI.Files;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 public class FileWriterMain {
     public void writeData(String data){
         try{
             //the file
-            File myFile = new File("test.txt");
+            File myFile = new File("myFile.txt");
 
             //where to write the file to
-            FileWriter writeToFile = new FileWriter("myFile.txt");
+            FileWriter writeToFile = new FileWriter(myFile);
 
             //method to write to the above
             writeToFile.write(data);
@@ -38,6 +35,27 @@ public class FileWriterMain {
         } catch (FileNotFoundException fileNotFoundException) {
             System.out.println("file does not exist");
 
+        }
+    }
+
+
+    public void appendData(String data){
+        try{
+            File myFile = new File("test.txt");
+            FileWriter fileWriter = new FileWriter(myFile,true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            PrintWriter printWriter=new PrintWriter(bufferedWriter);
+
+            printWriter.println(data);
+//            printWriter.println("More Money More problem");
+//            printWriter.println("NO MONEY STILL PROBLEM");
+
+            printWriter.close();
+            bufferedWriter.close();
+            fileWriter.close();
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
